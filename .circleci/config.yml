@@ -15,15 +15,15 @@ jobs:
             echo "Listing files complete."
       - attach_workspace:
           at: ~/workspace
-      - run: |
-        sonar-scanner \
-          -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
-          -Dsonar.organization="$SONAR_ORG" \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.exclusions="**/android/**,**/ios/**" \
-          -Dsonar.login="#SONAR_TOKEN" \
-          -Dsonar.branch.name="$CIRCLE_BRANCH"
-          -Dsonar.sources="."
+      - run:
+          sonar-scanner \
+            -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
+            -Dsonar.organization="$SONAR_ORG" \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.exclusions="**/android/**,**/ios/**" \
+            -Dsonar.login="#SONAR_TOKEN" \
+            -Dsonar.branch.name="$CIRCLE_BRANCH" \
+            -Dsonar.sources="."
 
 workflows:
   build-and-test:
