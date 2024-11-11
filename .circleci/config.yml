@@ -15,10 +15,9 @@ jobs:
             echo "Listing files complete."
       - attach_workspace:
           at: ~/workspace
-      - run: |
+      - run:
           SONAR_BRANCH="${CIRCLE_BRANCH:-master}"
-          echo "Sonar branch value is: "
-          echo "$SONAR_BRANCH"
+          echo "Sonar branch value is: $SONAR_BRANCH"
           echo "Sonar org value is: $SONAR_ORG"
           sonar-scanner \
             -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
@@ -26,8 +25,8 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.exclusions="**/android/**,**/ios/**" \
             -Dsonar.login="#SONAR_TOKEN" \
-            -Dsonar.branch.name="$CIRCLE_BRANCH" \
-            -Dsonar.sources="."
+            -Dsonar.branch.name="$SONAR_BRANCH" \
+            -Dsonar.sources="." || (echo "Sonar Scanner failed. Check logs for details."; exit 1)
 
 workflows:
   build-and-test:
