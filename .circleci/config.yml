@@ -38,7 +38,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      -say-hello
+      - say-hello
       - sonarqube
     # - deploy:
     #     requires:
