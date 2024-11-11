@@ -27,7 +27,6 @@ jobs:
             -Dsonar.login="$SONAR_TOKEN" \
             -Dsonar.branch.name="$CIRCLE_BRANCH" \
             -Dsonar.sources="."
-            -X 
 
 workflows:
   build-and-test:
