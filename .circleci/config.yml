@@ -9,7 +9,7 @@ jobs:
     steps:
       - run:
           name: List Files
-          command: ls -la .
+          command: find .
             echo "Listing files complete."
       - attach_workspace:
           at: ~/workspace
