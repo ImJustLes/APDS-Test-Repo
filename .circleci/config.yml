@@ -10,7 +10,7 @@ jobs:
       - run:
           name: List Files
           command: ls -la .
-          echo "Listing files complete."
+            echo "Listing files complete."
       - attach_workspace:
           at: ~/workspace
       - run: |
